@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Yuanylms - Your Platform for Posts, Updates, and Community">
+    <meta name="theme-color" content="#667eea">
+    <title>Yuanylms - Welcome</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #667eea;
+            --primary-dark: #764ba2;
+            --accent: #ff9a56;
+            --danger: #ff6b6b;
+            --success: #51cf66;
+            --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --border-light: #e2e8f0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(rgba(102, 126, 234, 0.7), rgba(118, 75, 162, 0.7)), 
+                        url('20260303_144111.jpg') center/cover fixed no-repeat;
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* Header */
+        header {
+            background: rgba(102, 126, 234, 0.85);
+            padding: 4rem 1rem;
+            text-align: center;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        /* Main Container */
+        .container {
+            flex: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+            width: 100%;
+        }
+
+        /* Section Base */
+        section {
+            margin-bottom: 3rem;
+        }
+
+        /* Welcome Section */
+        .welcome-section {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .welcome-section h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+        }
+
+        .welcome-section p {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* Posts Section */
+        .posts-section h2 {
+            color: white;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .post-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .post-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .post-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .post-content {
+            padding: 1.5rem;
+        }
+
+        .post-title {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .post-date {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .post-description {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Features Section */
+        .features-section {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            animation: slideUp 0.6s ease-out 0.3s both;
+        }
+
+        .features-section h2 {
+            color: var(--primary);
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            padding: 2rem;
+            background: #f7fafc;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            background: #edf2f7;
+            transform: translateX(5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            animation: slideUp 0.6s ease-out 0.4s both;
+        }
+
+        .contact-section h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .contact-info {
+            margin: 2rem 0;
+        }
+
+        .contact-info p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-method {
+            padding: 1.5rem;
+            background: #f7fafc;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-method:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .contact-method:hover a {
+            color: white;
+        }
+
+        .contact-method h4 {
+            margin-bottom: 0.75rem;
+        }
+
+        .contact-email {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            margin-top: 1rem;
+            border: 2px solid var(--primary);
+        }
+
+        .contact-email:hover {
+            background: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Quote Section */
+        .quote-section {
+            text-align: center;
+            padding: 2rem;
+            color: white;
+            animation: slideUp 0.6s ease-out 0.5s both;
+        }
+
+        .quote-section blockquote {
+            font-size: 1.8rem;
+            font-style: italic;
+            font-weight: 500;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            line-height: 2;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Downloads Section */
+        .downloads-section {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            animation: slideUp 0.6s ease-out 0.35s both;
+        }
+
+        .downloads-section h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            background: #f7fafc;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-link {
+            position: relative;
+            display: block;
+            overflow: hidden;
+            text-decoration: none;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-link:hover .gallery-image {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(102, 126, 234, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-link:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay span {
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .gallery-item h4 {
+            padding: 1rem;
+            color: var(--primary);
+            font-size: 0.95rem;
+            text-align: center;
+            word-break: break-word;
+        }
+
+        /* Social Media Section */
+        .social-section {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            animation: slideUp 0.6s ease-out 0.45s both;
+        }
+
+        .social-section h2 {
+            color: var(--primary);
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            min-width: 140px;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .social-icon {
+            font-size: 2rem;
+        }
+
+        .social-name {
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            nav ul {
+                gap: 1rem;
+            }
+
+            header h1 {
+                font-size: 2.2rem;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            .welcome-section,
+            .contact-section,
+            .features-section,
+            .downloads-section {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            .quote-section blockquote {
+                font-size: 1.5rem;
+            }
+
+            .posts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-methods {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 2.5rem 1rem;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .welcome-section,
+            .maintenance-banner,
+            .contact-section,
+            .features-section {
+                padding: 1.5rem;
+            }
+
+            section {
+                margin-bottom: 2rem;
+            }
+
+            .quote-section blockquote {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#home" class="logo">Yuanylms</a>
+            <button class="mobile-menu-toggle">☰</button>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#posts">Posts</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header id="home">
+        <h1>Welcome to Yuanylms</h1>
+        <p>Your Platform for Posts, Updates, and Community Building</p>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Welcome Section -->
+        <section class="welcome-section">
+            <h2>👋 Welcome!</h2>
+            <p>
+                Thank you for visiting Yuanylms! Our platform is dedicated to bringing you quality content, 
+                valuable updates, and building a vibrant community. We are committed to providing the best 
+                experience for all our users and partners.
+            </p>
+        </section>
+
+        <!-- Posts Section -->
+        <section class="posts-section" id="posts">
+            <h2>📝 Latest Posts</h2>
+            <div class="posts-grid">
+                <article class="post-card">
+                    <div class="post-image">📹</div>>
+                    <div class="post-content">
+                        <h3 class="post-title">New Kittens on TikTok!</h3>
+                        <p class="post-date">February 20, 2026</p>
+                        <p class="post-description">
+                            Check out my latest TikTok videos featuring adorable new kittens! 
+                            Follow @mingmingda1 for more cute cat content. #catsoftiktok #cats #viral
+                        </p>
+                        <p style="font-size: 0.9rem; color: var(--text-dark); margin-top: 1rem; font-style: italic;">
+                            💬 "I'd jumpscare alot!" - Community feedback
+                        </p>
+                        <a href="https://www.tiktok.com/@mingmingda1/video/7608791292549614856?lang=en" target="_blank" style="display: inline-block; margin-top: 1rem; background: var(--primary); color: white; padding: 0.5rem 1rem; border-radius: 20px; text-decoration: none; font-size: 0.9rem; font-weight: 600;">Watch on TikTok →</a>
+                    </div>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-image">🎵</div>
+                    <div class="post-content">
+                        <h3 class="post-title">New Release: "Sad but chill"</h3>
+                        <p class="post-date">March 21, 2026</p>
+                        <p class="post-description">
+                            Just released my newest song "Sad but chill" on BandLab! 
+                            Check it out on the @yuanylms profile. A fresh vibe with emotional depth.
+                        </p>
+                        <a href="https://www.bandlab.com/track/d9767db4-2548-4959-bf56-fab3de9be681?revId=ef31bd34-adce-4d7b-a79e-b33ecf80e488" target="_blank" style="display: inline-block; margin-top: 1rem; background: var(--primary); color: white; padding: 0.5rem 1rem; border-radius: 20px; text-decoration: none; font-size: 0.9rem; font-weight: 600;">Listen on BandLab →</a>
+                    </div>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-image">🎧</div>
+                    <div class="post-content">
+                        <h3 class="post-title">Latest Music Releases</h3>
+                        <p class="post-date">March 20, 2026</p>
+                        <p class="post-description">
+                            Follow my BandLab journey at @yuanylms for all the latest music productions 
+                            and creative releases coming your way!
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section" id="features">
+            <h2>✨ Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Mobile Friendly</h3>
+                    <p>Fully responsive design that works perfectly on all devices and screen sizes.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Fast Performance</h3>
+                    <p>Optimized for speed to ensure the best user experience possible.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure & Safe</h3>
+                    <p>Your data and privacy are our top priorities with modern security measures.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Beautiful Design</h3>
+                    <p>Modern and intuitive interface designed for the best user engagement.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Community</h3>
+                    <p>Connect with a vibrant community of users and share experiences.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Analytics</h3>
+                    <p>Track and analyze your interactions with comprehensive insights.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section" id="contact">
+            <h2>📧 Get in Touch</h2>
+            <div class="contact-info">
+                <p>Have a question or want to inquire about business opportunities? We'd love to hear from you!</p>
+            </div>
+
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <h4>📩 Email</h4>
+                    <p>For business inquiries and support</p>
+                    <a href="mailto:sarmientoyuan955@gmail.com" style="color: var(--primary); text-decoration: none;">
+                        sarmientoyuan955@gmail.com
+                    </a>
+                </div>
+
+                <div class="contact-method">
+                    <h4>💼 Business</h4>
+                    <p>Let's collaborate and grow together</p>
+                    <p style="font-size: 0.9rem; color: var(--text-light);">Available for partnerships</p>
+                </div>
+
+                <div class="contact-method">
+                    <h4>🤝 Support</h4>
+                    <p>Need help? We're here to assist</p>
+                    <p style="font-size: 0.9rem; color: var(--text-light);">24/7 support available</p>
+                </div>
+            </div>
+
+            <a href="mailto:sarmientoyuan955@gmail.com" class="contact-email">Send us an Email</a>
+        </section>
+
+        <!-- Social Media Section -->
+        <section class="social-section">
+            <h2>📱 Follow Us</h2>
+            <div class="social-links">
+                <a href="https://www.youtube.com/@ymlsgroupmedia" target="blank" class="social-link">
+                    <div class="social-icon">▶️</div>
+                    <div class="social-name">YouTube</div>
+                </a>
+                <a href="https://www.tiktok.com/@official_yuanylms" target="_blank" class="social-link">
+                    <div class="social-icon">🎵</div>
+                    <div class="social-name">TikTok</div>
+                </a>
+                <a href="https://www.facebook.com/yuan.manuel.sarmiento" target="_blank" class="social-link">
+                    <div class="social-icon">📘</div>
+                    <div class="social-name">Facebook</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Quote Section -->
+        <section class="quote-section">
+            <blockquote>✨ "Be strong and God bless" ✨</blockquote>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#posts">Posts</a>
+            <a href="#features">Features</a>
+            <a href="#contact">Contact</a>            <span style=\"width: 100%; height: 1px; background: rgba(255,255,255,0.2); margin: 0.5rem 0;\"></span>
+            <a href=\"https://www.youtube.com/@ymlsgroupmedia\" target=\"_blank\">YouTube</a>
+            <a href=\"https://www.tiktok.com/@official_yuanylms\" target=\"_blank\">TikTok</a>
+            <a href=\"https://www.facebook.com/yuan.manuel.sarmiento\" target=\"_blank\">Facebook</a>        </div>
+        <p>&copy; 2026 Yuanylms. All rights reserved.</p>
+        <p style="font-size: 0.85rem; margin-top: 0.5rem;">Built with ❤️ for the community</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('nav ul');
+
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', () => {
+                navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+            });
+        }
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (link.getAttribute('href').startsWith('#')) {
+                    navMenu.style.display = 'none';
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'slideUp 0.6s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section, .post-card, .feature-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
